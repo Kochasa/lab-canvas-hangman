@@ -1,34 +1,53 @@
 class HangmanCanvas {
   constructor(secretWord) {
     this.context = document.getElementById('hangman').getContext('2d');
-    // ... your code goes here
+    this.secretWord = secretWord
   }
 
   createBoard() {
-    // ... your code goes here
+    //Canvas is in the index html as 1200x800
+    this.context.clearRect(0,0,1200,800);
+    this.drawLines()
   }
 
   drawLines() {
-    // ... your code goes here
+    let xPosition = 400
+    let yPosition = 600
+    this.context.beginPath();
+    for (let i=0; i<this.secretWord.length; i++) {
+      this.context.moveTo(xPosition,yPosition);
+      this.context.lineTo(xPosition+30,yPosition);
+      xPosition+=45;
+    }
+    this.context.stroke();
   }
 
   writeCorrectLetter(index) {
-    // ... your code goes here
-  }
+    
+   }
 
   writeWrongLetter(letter, errorsLeft) {
-    // ... your code goes here
+    
   }
 
   drawHangman(errorsLeft) {
-    // ... your code goes here
+    
   }
 
   gameOver() {
-    // ... your code goes here
+    let img = new Image();
+    img.src = "/images/gameover.png"
+    img.addEventListener('load', () => {
+      this.context.drawImage(img, 200, 0, 600, 400);
+    })
   }
 
   winner() {
-    // ... your code goes here
+    let img = new Image();
+    img.src = "/images/awesome.png"
+    img.addEventListener('load', () => {
+      this.context.drawImage(img, 200, 0, 600, 400);
+    })
   }
 }
+
