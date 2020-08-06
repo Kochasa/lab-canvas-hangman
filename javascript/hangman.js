@@ -13,17 +13,17 @@ class Hangman {
 
   checkIfLetter(keyCode) {
     if(keyCode >= 65 && keyCode <= 99){
-      return true
+      return true;
     } else {
-      return false
+      return false;
     }
   }
 
   checkClickedLetters(letter) {
     if(this.letters.includes(letter)){
-      return true
+      return false;
     } else {
-      return false
+      return true;
     }
   }
 
@@ -32,6 +32,7 @@ class Hangman {
    }
 
   addWrongLetter(letter) {
+    this.errorsLeft -= 1
     if (this.checkClickedLetters(letter)){
       return this.errorsLeft
     } else {
@@ -41,14 +42,18 @@ class Hangman {
 
   checkGameOver() {
     if (this.errorsLeft === 0) {
-      return true
+      return true;
     } else {
-      return false
+      return false;
     }
   }
 
   checkWinner() {
-    // ... your code goes here
+    if (this.secretWord.length === this.guessedLetters.length) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 
