@@ -28,8 +28,7 @@ class HangmanCanvas {
     let yPosition = 600
     this.context.fontStyle = 'black';
     this.context.font = '20px Tahoma';
-    this.context.fillText(this.secretWord[index].toUpperCase(), 400 + (62 * index), 600);
-    
+   this.context.fillText(this.secretWord[index].toUpperCase(), 400 + (62 * index), 590);
    }
 
   writeWrongLetter(letter, errorsLeft) {
