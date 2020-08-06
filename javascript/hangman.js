@@ -9,7 +9,7 @@ class Hangman {
 
   pickWord() {
     return this.words[Math.floor(Math.random() * this.words.length)]
-    }
+      }
 
   checkIfLetter(keyCode) {
     if(keyCode >= 65 && keyCode <= 99){

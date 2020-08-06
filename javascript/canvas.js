@@ -2,6 +2,7 @@ class HangmanCanvas {
   constructor(secretWord) {
     this.context = document.getElementById('hangman').getContext('2d');
     this.secretWord = secretWord
+    console.log(secretWord);
   }
 
   createBoard() {
@@ -25,11 +26,21 @@ class HangmanCanvas {
   writeCorrectLetter(index) {
     let xPosition = 400
     let yPosition = 600
+    this.context.fontStyle = 'black';
+    this.context.font = '20px Tahoma';
+    this.context.fillText(this.secretWord[index].toUpperCase(), 400 + (62 * index), 600);
     
    }
 
   writeWrongLetter(letter, errorsLeft) {
-    
+    let x = 850;
+    if (errorsLeft >= 0) {
+      let off = (errorsLeft % 100) * 30;
+      if (off >= 0 && x < 900) {
+        this.context.font = "40px Tahoma";
+        this.context.fillText(letter, x - off, 225);
+      }
+    }
   }
 
   drawHangman(errorsLeft) {
